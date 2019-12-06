@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-npm install webpack@1.10.1 json-loader@0.5.2 uglify-js@2.4.24
+yarn add webpack@1.10.1 json-loader@0.5.2 uglify-js@2.4.24
 
 webpack=node_modules/.bin/webpack
 uglifyjs=node_modules/.bin/uglifyjs
