@@ -1,10 +1,10 @@
 {
-  "name": "npdynamodb",
+  "name": "@jitterbit/npdynamodb",
   "version": "0.2.15",
   "description": "A Node.js Simple Query Builder and ORM for AWS DynamoDB.",
   "main": "index.js",
   "scripts": {
-    "test": "find ./test -name *_spec.js | xargs mocha --reporter spec -t 20000"
+    "test": "mocha --reporter spec --timeout 20000 ./test/**/*_spec.js"
   },
   "keywords": [
     "dynamodb",
@@ -18,14 +18,28 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noppoMan/npdynamodb.git"
+    "url": "https://github.com/jitterbit/npdynamodb.git"
   },
-  "author": "noppoMan <yuki@miketokyo.com> (http://miketokyo.com)",
+  "author": {
+    "name": "noppoMan",
+    "email": "yuki@miketokyo.com",
+    "url": "http://miketokyo.com"
+  },
+  "contributors": [
+    {
+      "name": "noppoMan",
+      "email": "yuki@miketokyo.com",
+      "url": "http://miketokyo.com"
+    },
+    {
+      "name": "Jitterbit"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/noppoMan/npdynamodb/issues"
+    "url": "https://github.com/jitterbit/npdynamodb/issues"
   },
-  "homepage": "https://github.com/noppoMan/npdynamodb",
+  "homepage": "https://github.com/jitterbit/npdynamodb#readme",
   "dependencies": {
     "bluebird": "^2.9.24",
     "chalk": "^1.0.0",
@@ -41,7 +55,8 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.1.18",
-    "chai": "^2.2.0"
+    "chai": "^2.2.0",
+    "mocha": "^6.2.2"
   },
   "browser": {
     "./lib/migrate/migrator.js": false,
