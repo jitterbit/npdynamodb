@@ -30,7 +30,7 @@ jobs:
           node-verion: ${{ matrix.node }}
       - name: Start Local DynamoDB
         run: |
-          docker run -d -p 8000:8000 amazon/dynamodb-local -inMemory -port 8000
+          docker run -d -p 8000:8000 amazon/dynamodb-local
       - name: Install
         run: |
           yarn install
