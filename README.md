@@ -1,5 +1,7 @@
 # npdynamodb
-[![npm version](https://badge.fury.io/js/.svg)](http://badge.fury.io/js/%40jitterbit%2Fnpdynamodb) [![Actions Status](https://github.com/jitterbit/npdynamodb/workflows/Test/badge.svg)](https://github.com/jitterbit/npdynamodb/actions)
+[![npm version](https://badge.fury.io/js/%40jitterbit%2Fnpdynamodb.svg)](https://badge.fury.io/js/%40jitterbit%2Fnpdynamodb) [![Actions Status](https://github.com/jitterbit/npdynamodb/workflows/Test/badge.svg)](https://github.com/jitterbit/npdynamodb/actions)
+
+Forked from [noppoMan/npdynamodb](https://github.com/noppoMan/npdynamodb).
 
 A Node.js Simple Query Builder and ORM for AWS DynamoDB.
 
