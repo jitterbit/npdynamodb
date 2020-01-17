@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        node:
+          - 8
+          - 10
+          - 12
+          - 13
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-verion: ${{ matrix.node }}
+      - name: Start Local DynamoDB
+        run: |
+          docker run -d -p 8000:8000 tray/dynamodb-local -inMemory -port 8000
+      - name: Install
+        run: |
+          yarn install
+      - name: Test
+        run: |
+          yarn test

@@ -1,4 +1,6 @@
-# npdynamodb [![npm version](https://badge.fury.io/js/npdynamodb.svg)](http://badge.fury.io/js/npdynamodb) [![Code Climate](https://codeclimate.com/github/noppoMan/npdynamodb/badges/gpa.svg)](https://codeclimate.com/github/noppoMan/npdynamodb) [![Build Status](https://travis-ci.org/noppoMan/npdynamodb.svg?branch=master)](https://travis-ci.org/noppoMan/npdynamodb)
+# npdynamodb
+[![npm version](https://badge.fury.io/js/.svg)](http://badge.fury.io/js/%40jitterbit%2Fnpdynamodb) [![Actions Status](https://github.com/jitterbit/npdynamodb/workflows/Test/badge.svg)](https://github.com/jitterbit/npdynamodb/actions)
+
 A Node.js Simple Query Builder and ORM for AWS DynamoDB.
 
 ## Motivation
@@ -30,15 +32,15 @@ We release you redundancy codes and see simple syntax.
 Of course, will not see callback hell!
 
 Npdynamodb has the following functions
-* [Simple QueryBuilder](https://github.com/noppoMan/npdynamodb/blob/master/README.md#usage-of-querybuilder)
-* [Light ORM(Active Record Model Like)](https://github.com/noppoMan/npdynamodb/blob/master/README.md#usage-of-orm)
-* [DynamoDB Migrator](https://github.com/noppoMan/npdynamodb/blob/master/README.md#migration)
-* [Command Line Interface](https://github.com/noppoMan/npdynamodb/blob/master/README.md#command-line-interfaces)
+* [Simple QueryBuilder](#usage-of-querybuilder)
+* [Light ORM(Active Record Model Like)](#usage-of-orm)
+* [DynamoDB Migrator](#migration)
+* [Command Line Interface](#command-line-interfaces)
 
 ### List of npdynamodb apis
-* [QueryBuilder Apis](https://github.com/noppoMan/npdynamodb/blob/master/docs/query_builder_apis.md)
-* [ORM Apis](https://github.com/noppoMan/npdynamodb/blob/master/docs/orm_apis.md)
-* [Migration Apis](https://github.com/noppoMan/npdynamodb/blob/master/docs/migration_apis.md)
+* [QueryBuilder Apis](https://github.com/jitterbit/npdynamodb/blob/master/docs/query_builder_apis.md)
+* [ORM Apis](https://github.com/jitterbit/npdynamodb/blob/master/docs/orm_apis.md)
+* [Migration Apis](https://github.com/jitterbit/npdynamodb/blob/master/docs/migration_apis.md)
 
 ## Usage of QueryBuilder
 
