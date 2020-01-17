@@ -550,7 +550,7 @@ npd migrate:rollback
 
 ## How to test?
 ```sh
-npm test
+yarn test
 ```
 
 ## QueryBuilder Callbacks
