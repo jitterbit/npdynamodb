@@ -23,14 +23,15 @@ jobs:
           - 13
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
           node-verion: ${{ matrix.node }}
       - name: Start Local DynamoDB
         run: |
-          docker run -d -p 8000:8000 amazon/dynamodb-local
+          docker run -d -p 8000:8000 tray/dynamodb-local -inMemory -port 8000
       - name: Install
         run: |
           yarn install
