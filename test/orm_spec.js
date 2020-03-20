@@ -94,7 +94,7 @@ describe('ORM', function(){
       return chatCollection;
     })
     .then(function(chatCollection){
-      var chat = chatCollection.first();
+      var chat = chatCollection.head();
       expect(chat.get("room_id")).to.equal('room1');
       expect(chat.get("timestamp")).to.equal(1429291245);
       return chatCollection;
@@ -115,7 +115,7 @@ describe('ORM', function(){
     })
     .then(function(chatCollection){
       var chats = chatCollection.map(function(chat){
-        chat.set('timestamp', chat.get('timestamp') -1);
+        chat.set('timestamp', chat.get('timestamp') - 1);
         return chat;
       });
       expect(chats[0].get("timestamp")).to.equal(1429291244);
@@ -196,7 +196,7 @@ describe('ORM', function(){
 
     it("Should each models in collection save changes", function(done){
       Chat.where('room_id', 'room1').fetch().then(function(chats){
-        return chats.first().set('message', 'this is a updated message').save()
+        return chats.head().set('message', 'this is a updated message').save()
         .then(function(chat){
           return chat.reload();
         });
