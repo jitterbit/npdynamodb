@@ -2,12 +2,15 @@
 [![npm version](https://badge.fury.io/js/%40jitterbit%2Fnpdynamodb.svg)](https://badge.fury.io/js/%40jitterbit%2Fnpdynamodb) [![Actions Status](https://github.com/jitterbit/npdynamodb/workflows/Test/badge.svg)](https://github.com/jitterbit/npdynamodb/actions)
 
 Forked from [noppoMan/npdynamodb](https://github.com/noppoMan/npdynamodb).
+This fork intends primarily to maintain the migration capabilities of the original package. No testing, beyond the original
+unit tests, is done on any area besides the migrator.
+
+---
 
 A Node.js Simple Query Builder and ORM for AWS DynamoDB.
 
 ## Motivation
-When I visited [here ](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#query-property
-) for the first time, I closed it in a moment.
+When I visited [here](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#query-property) for the first time, I closed it in a moment.
 Because it is too long and hard to see to understand.
 So I decided to make client to handle DynamoDB more easier and it doesn't take waste of time to read documentation for it.
 
@@ -20,7 +23,7 @@ So I decided to make client to handle DynamoDB more easier and it doesn't take w
 
 ## Installation
 ```sh
-npm install npdynamodb
+npm install @jitterbit/npdynamodb
 ```
 
 ## Why is the Pure AWS-SDK in Node.js NOT good?
@@ -648,50 +651,6 @@ npdynamodb.plugin(function(Klass){
 
 ### Available Plugins
 * [npdynamodb-typecast](https://github.com/noppoMan/npdynamodb-typecast) For casting hash and range key to actual attribution type
-
-## Browser Support
-Npdynamodb can be built using browserify or webpack, and pre-built or pre-built with uglified version can be found in the build directory.
-
-### For Browserify or Webpack
-```js
-var AWS = require('aws-sdk');
-var npdynamodb = require('npdynamodb/build/npdynamodb');
-
-var dynamodb = new AWS.DynamoDB({
-  apiVersion: '2012-08-10',
-  accessKeyId: "here is key",
-  secretAccessKey: "here is secret key",
-  region: "ap-northeast-1",
-  sslEnabled: true,
-});
-
-var npd = npdynamodb.createClient(dynamodb);
-npd().table('table_name').where('id', 1).then(function(data){
-  console.log(data);
-});
-```
-
-### For HTML
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1.39/aws-sdk.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/2.9.33/bluebird.min.js"></script>
-<script src="../build/npdynamodb.min.js"></script>
-<script>
-  var dynamodb = new AWS.DynamoDB({
-    apiVersion: '2012-08-10',
-    accessKeyId: "here is key",
-    secretAccessKey: "here is secret key",
-    region: "ap-northeast-1",
-    sslEnabled: true,
-  });
-
-  var npd = npdynamodb.createClient(dynamodb);
-  npd().table('table_name').where('id', 1).then(function(data){
-    console.log(data);
-  });
-</script>
-```
 
 ## Upgrading and Release Note
 #### Upgrading 0.1x -> 0.2x
