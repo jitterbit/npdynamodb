@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-var Liftoff   = require('liftoff');
+var Liftoff = require('liftoff');
 var interpret = require('interpret');
 var program = require('commander');
 var fs = require('fs');
@@ -11,8 +11,6 @@ var argv = require('minimist')(process.argv.slice(2));
 var chalk = require('chalk');
 var _ = require('lodash');
 var Migrator = require('../migrate/migrator');
-var fs = require('fs');
-var repl = require("repl");
 var util = require('util');
 var npdynamod = require('../../index');
 
