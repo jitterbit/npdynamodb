@@ -1,6 +1,6 @@
 'use strict';
 
-var Promise = require('bluebird')
+var Promise = require('bluebird');
 var chai = require('chai');
 var expect = chai.expect;
 var _ = require('lodash');

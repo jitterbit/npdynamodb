@@ -11,11 +11,11 @@ var stabData = _.range(1, 11).map(function(i){
     gsi_hash_key: "gkey1", //gsi
     lsi_range_key: i, // lsi
     bool: true,
-    binary: new Buffer([1,2,3,4]),
+    binary: Buffer.from([1,2,3,4]),
     null: true,
     stringSet: ["foo", "bar"],
     numberSet: [1, 2],
-    binarySet: [new Buffer([1,2,3,4]), new Buffer([5,6,7,8])],
+    binarySet: [Buffer.from([1,2,3,4]), Buffer.from([5,6,7,8])],
     document: {
       number1: 1,
       string1: "foo",
