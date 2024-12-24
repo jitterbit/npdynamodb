@@ -62,7 +62,7 @@ function inspect(data){
 
 function initCli(){
   var env = program.env || argv.e || 'development';
-  var filepath = program.config ? path.isAbsolute(program.config) ? program.config : path.join(process.cwd(), program.config) : path.join(process.cwd(), "./npdfile");
+  var filepath = program.npdfile ? path.isAbsolute(program.npdfile) ? program.npdfile : path.join(process.cwd(), program.npdfile) : path.join(process.cwd(), "./npdfile");
 
   if(argv.e) {
     var name = program.args[0]._name;
