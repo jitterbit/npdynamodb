@@ -13,6 +13,7 @@ var _ = require('lodash');
 var Migrator = require('../migrate/migrator');
 var util = require('util');
 var npdynamod = require('../../index');
+var path = require('path');
 
 function padDate(t){
   if(t < 10) t = "0"+t.toString();
@@ -31,10 +32,11 @@ function exit(text) {
   process.exit(0);
 }
 
+var npdfilepath;
 var npdfile;
 
 function npdFile(){
-  npdfile = npdfile || require(process.cwd() + "/npdfile");
+  npdfile = npdfile || require(npdfilepath);
   return npdfile;
 }
 
@@ -47,9 +49,9 @@ function npdAA(){
   return fs.readFileSync(__dirname + '/../templates/npd_aa.stub', 'utf-8');
 }
 
-function checkNpdfileExists(){
-  if(!fs.existsSync(process.cwd() + "/npdfile.js")){
-    console.error(chalk.red("npdfile.js was not found. Please type `npd init` to create npdfile.js"));
+function checkNpdfileExists(filepath){
+  if(!fs.existsSync(filepath)){
+    console.error(chalk.red("npdfile was not found. Please type `npd init` to create npdfile.js"));
     process.exit(1);
   }
 }
@@ -60,6 +62,7 @@ function inspect(data){
 
 function initCli(){
   var env = program.env || argv.e || 'development';
+  var filepath = program.config ? path.isAbsolute(program.config) ? program.config : path.join(process.cwd(), program.config) : path.join(process.cwd(), "./npdfile");
 
   if(argv.e) {
     var name = program.args[0]._name;
@@ -67,7 +70,10 @@ function initCli(){
       console.log(chalk.yellow('DEPRECATION WARNING') + ': npd: using `' + name+ '` with a `-e` option is deprecated!');
     }
   }
-  checkNpdfileExists();
+
+  checkNpdfileExists(filepath);
+  npdfilepath = filepath;
+
   var config = npdFile()[env];
 
   if(!config) {
@@ -87,6 +93,7 @@ function initialize(){
   program
     .version(require('../../package.json').version)
     .option('--env [value]', 'Specify the environment to run command.')
+    .option('--npdfile [npdfile]', 'Specify the path to the npdfile.', './npdfile.js')
   ;
 
   program
@@ -136,29 +143,31 @@ function initialize(){
   .command('migrate:generate <name>')
   .option('-v, --verbose [value]', 'No-op')
   .description('       Create a named migration file.')
-  .action(function(name) {
-    var migrationDir = migrationFilePath();
+  .action(function (name) {
+    return initCli().then(function (config) {
+      var migrationDir = migrationFilePath();
 
-    if(!fs.existsSync(migrationDir)){
-      fs.mkdirSync(migrationDir);
-    }
+      if (!fs.existsSync(migrationDir)) {
+        fs.mkdirSync(migrationDir);
+      }
 
-    var d = new Date();
-    var migrateFileParts = [
-      d.getUTCFullYear(),
-      padDate(d.getUTCMonth()+1),
-      padDate(d.getUTCDate()+1),
-      padDate(d.getUTCHours()),
-      padDate(d.getUTCMinutes()),
-      padDate(d.getUTCSeconds()),
-      '_',
-      name,
-      '.js'
-    ];
+      var d = new Date();
+      var migrateFileParts = [
+        d.getUTCFullYear(),
+        padDate(d.getUTCMonth() + 1),
+        padDate(d.getUTCDate() + 1),
+        padDate(d.getUTCHours()),
+        padDate(d.getUTCMinutes()),
+        padDate(d.getUTCSeconds()),
+        '_',
+        name,
+        '.js'
+      ];
 
-    var fPath = migrationDir+'/'+migrateFileParts.join('');
-    fs.writeFileSync(fPath, templates.generator);
-    exit('Created ' + fPath);
+      var fPath = migrationDir + '/' + migrateFileParts.join('');
+      fs.writeFileSync(fPath, templates.generator);
+      exit('Created ' + fPath);
+    }).catch(exitWithError);
   });
 
   program
